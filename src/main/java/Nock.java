@@ -1,8 +1,23 @@
+import java.util.Scanner;
+
 public class Nock {
     public static void main(String[] args) {
-        System.out.println("Hello! I'm Nock.");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Hello! I'm Nock");
         System.out.println("What can I do for you?");
-        System.out.println("Bye. Hope to see you again soon!");
+
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (input.equals("bye")) {
+                System.out.println("Bye. Hope to see you again soon!");
+                break;
+            }
+
+            System.out.println(input);
+        }
+
+        scanner.close();
     }
 }
-
