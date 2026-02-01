@@ -21,45 +21,82 @@ public class Nock {
             if (input.equals("list")) {
                 System.out.println("Here are the tasks in your list:");
                 for (int i = 0; i < taskCount; i++) {
-                    System.out.println((i + 1) + "." + tasks[i].toDisplayString());
+                    System.out.println((i + 1) + "." + tasks[i]);
                 }
                 continue;
             }
 
             if (input.startsWith("mark ")) {
-                int index = parseTaskNumber(input.substring(5)) - 1;
-                if (isValidIndex(index, taskCount)) {
+                int index = Integer.parseInt(input.substring(5).trim()) - 1;
+                if (index >= 0 && index < taskCount) {
                     tasks[index].markDone();
                     System.out.println("Nice! I've marked this task as done:");
-                    System.out.println("  " + tasks[index].toDisplayString());
+                    System.out.println("  " + tasks[index]);
                 }
                 continue;
             }
 
             if (input.startsWith("unmark ")) {
-                int index = parseTaskNumber(input.substring(7)) - 1;
-                if (isValidIndex(index, taskCount)) {
+                int index = Integer.parseInt(input.substring(7).trim()) - 1;
+                if (index >= 0 && index < taskCount) {
                     tasks[index].markUndone();
                     System.out.println("OK, I've marked this task as not done yet:");
-                    System.out.println("  " + tasks[index].toDisplayString());
+                    System.out.println("  " + tasks[index]);
                 }
                 continue;
             }
 
-            // Otherwise: treat input as a new task
-            tasks[taskCount] = new Task(input);
-            taskCount++;
-            System.out.println("added: " + input);
+            if (input.startsWith("todo ")) {
+                String description = input.substring(5).trim();
+                tasks[taskCount] = new Todo(description);
+                taskCount++;
+                System.out.println("Got it. I've added this task:");
+                System.out.println("  " + tasks[taskCount - 1]);
+                System.out.println("Now you have " + taskCount + " tasks in the list.");
+                continue;
+            }
+
+            if (input.startsWith("deadline ")) {
+                String rest = input.substring(9).trim(); // after "deadline "
+                String[] parts = rest.split(" /by ", 2);
+                String description = parts[0].trim();
+                String by = (parts.length == 2) ? parts[1].trim() : "";
+                tasks[taskCount] = new Deadline(description, by);
+                taskCount++;
+                System.out.println("Got it. I've added this task:");
+                System.out.println("  " + tasks[taskCount - 1]);
+                System.out.println("Now you have " + taskCount + " tasks in the list.");
+                continue;
+            }
+
+            if (input.startsWith("event ")) {
+                String rest = input.substring(6).trim(); // after "event "
+                String[] firstSplit = rest.split(" /from ", 2);
+                String description = firstSplit[0].trim();
+
+                String from = "";
+                String to = "";
+
+                if (firstSplit.length == 2) {
+                    String[] secondSplit = firstSplit[1].split(" /to ", 2);
+                    from = secondSplit[0].trim();
+                    if (secondSplit.length == 2) {
+                        to = secondSplit[1].trim();
+                    }
+                }
+
+                tasks[taskCount] = new Event(description, from, to);
+                taskCount++;
+                System.out.println("Got it. I've added this task:");
+                System.out.println("  " + tasks[taskCount - 1]);
+                System.out.println("Now you have " + taskCount + " tasks in the list.");
+                continue;
+            }
+
+            // If you want: ignore unknown commands for now, or treat as todo.
+            System.out.println("Please use: todo / deadline / event / list / mark / unmark / bye");
         }
 
         scanner.close();
-    }
-
-    private static int parseTaskNumber(String s) {
-        return Integer.parseInt(s.trim());
-    }
-
-    private static boolean isValidIndex(int index, int taskCount) {
-        return index >= 0 && index < taskCount;
     }
 }
