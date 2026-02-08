@@ -1,11 +1,10 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Nock {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        Task[] tasks = new Task[100];
-        int taskCount = 0;
+        ArrayList<Task> tasks = new ArrayList<>();
 
         System.out.println("Hello! I'm Nock");
         System.out.println("What can I do for you?");
@@ -14,10 +13,8 @@ public class Nock {
             String input = scanner.nextLine().trim();
 
             try {
-                Result result = handleInput(input, tasks, taskCount);
-                taskCount = result.taskCount;
-
-                if (result.shouldExit) {
+                boolean shouldExit = handleInput(input, tasks);
+                if (shouldExit) {
                     break;
                 }
             } catch (NockException e) {
@@ -28,45 +25,44 @@ public class Nock {
         scanner.close();
     }
 
-    // Small helper class to return updated taskCount and exit flag
-    private static class Result {
-        private final int taskCount;
-        private final boolean shouldExit;
-
-        Result(int taskCount, boolean shouldExit) {
-            this.taskCount = taskCount;
-            this.shouldExit = shouldExit;
-        }
-    }
-
-    private static Result handleInput(String input, Task[] tasks, int taskCount) throws NockException {
+    private static boolean handleInput(String input, ArrayList<Task> tasks) throws NockException {
         if (input.equals("bye")) {
             System.out.println("Bye. Hope to see you again soon!");
-            return new Result(taskCount, true);
+            return true;
         }
 
         if (input.equals("list")) {
             System.out.println("Here are the tasks in your list:");
-            for (int i = 0; i < taskCount; i++) {
-                System.out.println((i + 1) + "." + tasks[i]);
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println((i + 1) + "." + tasks.get(i));
             }
-            return new Result(taskCount, false);
+            return false;
         }
 
         if (input.startsWith("mark")) {
-            int index = parseIndex(input, "mark", taskCount);
-            tasks[index].markDone();
+            int index = parseIndex(input, "mark", tasks.size());
+            tasks.get(index).markDone();
             System.out.println("Nice! I've marked this task as done:");
-            System.out.println("  " + tasks[index]);
-            return new Result(taskCount, false);
+            System.out.println("  " + tasks.get(index));
+            return false;
         }
 
         if (input.startsWith("unmark")) {
-            int index = parseIndex(input, "unmark", taskCount);
-            tasks[index].markUndone();
+            int index = parseIndex(input, "unmark", tasks.size());
+            tasks.get(index).markUndone();
             System.out.println("OK, I've marked this task as not done yet:");
-            System.out.println("  " + tasks[index]);
-            return new Result(taskCount, false);
+            System.out.println("  " + tasks.get(index));
+            return false;
+        }
+
+        // ✅ Level 6: delete
+        if (input.startsWith("delete")) {
+            int index = parseIndex(input, "delete", tasks.size());
+            Task removed = tasks.remove(index); // ArrayList shifts automatically
+            System.out.println("Noted. I've removed this task:");
+            System.out.println("  " + removed);
+            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            return false;
         }
 
         if (input.startsWith("todo")) {
@@ -74,10 +70,10 @@ public class Nock {
             if (description.isEmpty()) {
                 throw new NockException("OOPS!!! The description of a todo cannot be empty.");
             }
-            tasks[taskCount] = new Todo(description);
-            taskCount++;
-            printAdded(tasks[taskCount - 1], taskCount);
-            return new Result(taskCount, false);
+            Task t = new Todo(description);
+            tasks.add(t);
+            printAdded(t, tasks.size());
+            return false;
         }
 
         if (input.startsWith("deadline")) {
@@ -89,10 +85,10 @@ public class Nock {
             if (parts.length < 2 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty()) {
                 throw new NockException("OOPS!!! Use: deadline <description> /by <time>");
             }
-            tasks[taskCount] = new Deadline(parts[0].trim(), parts[1].trim());
-            taskCount++;
-            printAdded(tasks[taskCount - 1], taskCount);
-            return new Result(taskCount, false);
+            Task t = new Deadline(parts[0].trim(), parts[1].trim());
+            tasks.add(t);
+            printAdded(t, tasks.size());
+            return false;
         }
 
         if (input.startsWith("event")) {
@@ -108,13 +104,12 @@ public class Nock {
             if (p2.length < 2 || p2[0].trim().isEmpty() || p2[1].trim().isEmpty()) {
                 throw new NockException("OOPS!!! Use: event <description> /from <start> /to <end>");
             }
-            tasks[taskCount] = new Event(p1[0].trim(), p2[0].trim(), p2[1].trim());
-            taskCount++;
-            printAdded(tasks[taskCount - 1], taskCount);
-            return new Result(taskCount, false);
+            Task t = new Event(p1[0].trim(), p2[0].trim(), p2[1].trim());
+            tasks.add(t);
+            printAdded(t, tasks.size());
+            return false;
         }
 
-        // Unknown command (minimum requirement)
         throw new NockException("OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 
@@ -129,6 +124,7 @@ public class Nock {
         if (numberPart.isEmpty()) {
             throw new NockException("OOPS!!! Please provide a task number. Example: " + command + " 2");
         }
+
         int oneBased;
         try {
             oneBased = Integer.parseInt(numberPart);
