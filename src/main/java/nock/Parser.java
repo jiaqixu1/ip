@@ -1,3 +1,5 @@
+package nock;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -16,7 +18,7 @@ public class Parser {
 
         if (trimmed.startsWith("todo")) {
             String desc = trimmed.substring(4).trim();
-            if (desc.isEmpty()) throw new NockException("Todo description cannot be empty.");
+            if (desc.isEmpty()) throw new NockException("nock.Todo description cannot be empty.");
             return ParsedCommand.addTodo(desc);
         }
 
@@ -52,7 +54,7 @@ public class Parser {
         try {
             return Integer.parseInt(numberPart) - 1; // store as 0-based
         } catch (NumberFormatException e) {
-            throw new NockException("Task number must be an integer.");
+            throw new NockException("nock.Task number must be an integer.");
         }
     }
 

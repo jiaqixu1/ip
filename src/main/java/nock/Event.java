@@ -1,3 +1,5 @@
+package nock;
+
 public class Event extends Task {
     protected final String from;
     protected final String to;
