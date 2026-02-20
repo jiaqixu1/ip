@@ -1,7 +1,18 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Nock {
+
+    private static LocalDate parseDate(String s) throws NockException {
+        try {
+            return LocalDate.parse(s, DateTimeFormatter.ISO_LOCAL_DATE); // yyyy-MM-dd
+        } catch (DateTimeParseException e) {
+            throw new NockException("OOPS!!! Date must be in yyyy-MM-dd format. Example: 2019-12-02");
+        }
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -104,7 +115,9 @@ public class Nock {
                 throw new NockException("OOPS!!! Use: deadline <description> /by <time>");
             }
 
-            Task t = new Deadline(parts[0].trim(), parts[1].trim());
+            LocalDate byDate = parseDate(parts[1].trim());
+            Task t = new Deadline(parts[0].trim(), byDate);
+
             tasks.add(t);
             storage.save(tasks);
             printAdded(t, tasks.size());

@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.time.LocalDate;
+
 
 public class Storage {
     private final String filePath;
@@ -53,7 +55,7 @@ public class Storage {
     private Task parseTask(String line) throws NockException {
         String[] parts = line.split(" \\| ");
 
-        // Minimal corruption handling
+
         if (parts.length < 3) {
             throw new NockException("Corrupted data file.");
         }
@@ -69,7 +71,8 @@ public class Storage {
             }
             case "D": {
                 if (parts.length < 4) throw new NockException("Corrupted data file.");
-                Deadline d = new Deadline(parts[2], parts[3]);
+                LocalDate byDate = LocalDate.parse(parts[3]);
+                Deadline d = new Deadline(parts[2], byDate);
                 if (done) d.markDone();
                 return d;
             }
@@ -92,7 +95,7 @@ public class Storage {
         }
         if (task instanceof Deadline) {
             Deadline d = (Deadline) task;
-            return "D | " + done + " | " + d.description + " | " + d.by;
+            return "D | " + done + " | " + d.description + " | " + d.getByForStorage();
         }
         if (task instanceof Event) {
             Event e = (Event) task;
