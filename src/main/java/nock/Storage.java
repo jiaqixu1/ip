@@ -17,7 +17,7 @@ public class Storage {
         File file = new File(filePath);
 
         if (!file.exists()) {
-            return tasks; // first run: nothing to load
+            return tasks; 
         }
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -31,7 +31,6 @@ public class Storage {
         } catch (IOException e) {
             throw new NockException("Error loading tasks from file.");
         }
-
         return tasks;
     }
 

@@ -11,7 +11,6 @@ public class Parser {
 
         if (trimmed.equals("bye")) return ParsedCommand.exit();
         if (trimmed.equals("list")) return ParsedCommand.list();
-
         if (trimmed.startsWith("mark")) return ParsedCommand.mark(parseIndex(trimmed, "mark"));
         if (trimmed.startsWith("unmark")) return ParsedCommand.unmark(parseIndex(trimmed, "unmark"));
         if (trimmed.startsWith("delete")) return ParsedCommand.delete(parseIndex(trimmed, "delete"));
