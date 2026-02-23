@@ -45,6 +45,17 @@ public class Parser {
             return ParsedCommand.addEvent(p1[0].trim(), p2[0].trim(), p2[1].trim());
         }
 
+        if (input.startsWith("find ")) {
+            String keyword = input.substring(5).trim();
+            if (keyword.isEmpty()) {
+                throw new NockException("The keyword for find cannot be empty.");
+            }
+            return ParsedCommand.find(keyword);
+        }
+        if (input.equals("find")) {
+            throw new NockException("The keyword for find cannot be empty.");
+        }
+
         throw new NockException("I don't know what that means.");
     }
 

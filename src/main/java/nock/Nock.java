@@ -1,4 +1,5 @@
 package nock;
+import java.util.List;
 
 public class Nock {
 
@@ -92,6 +93,11 @@ public class Nock {
                 tasks.add(event);
                 storage.save(tasks.getTasks());
                 ui.showAdded(event, tasks.size());
+                return false;
+
+            case FIND:
+                List<Task> matches = tasks.findTasks(command.desc);
+                ui.showFindResults(matches);
                 return false;
 
             default:

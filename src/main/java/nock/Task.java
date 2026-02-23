@@ -9,16 +9,26 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Mark the task as done
+     */
     public void markDone() {
         this.isDone = true;
     }
 
+    /**
+     * Mark the task as undone
+     */
     public void markUndone() {
         this.isDone = false;
     }
 
     public String getStatusIcon() {
         return (isDone ? "X" : " ");
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     @Override
