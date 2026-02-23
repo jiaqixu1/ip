@@ -6,6 +6,7 @@ public class Nock {
     private final Storage storage;
     private final TaskList tasks;
     private final Ui ui;
+    private static final String DEFAULT_FILE_PATH = "data/nock.txt";
 
     public Nock(String filePath) {
         ui = new Ui();
@@ -22,6 +23,9 @@ public class Nock {
         tasks = loaded;
     }
 
+    public Nock() {
+        this(DEFAULT_FILE_PATH);
+    }
     /**
      * Run the program
      */
@@ -103,6 +107,12 @@ public class Nock {
             default:
                 throw new NockException("Unknown command.");
         }
+    }
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return "Nock heard: " + input;
     }
 
     public static void main(String[] args) {
