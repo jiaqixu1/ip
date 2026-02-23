@@ -17,7 +17,7 @@ public class Storage {
         File file = new File(filePath);
 
         if (!file.exists()) {
-            return tasks; 
+            return tasks;
         }
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
