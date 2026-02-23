@@ -26,6 +26,7 @@ public class Nock {
     public Nock() {
         this(DEFAULT_FILE_PATH);
     }
+
     /**
      * Run the program
      */
@@ -47,6 +48,9 @@ public class Nock {
         ui.showGoodbye();
     }
 
+/**
+ * Execute different commands
+ */
     private boolean execute(ParsedCommand command) throws NockException {
 
         switch (command.type) {
