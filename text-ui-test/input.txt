@@ -1,0 +1,8 @@
+list
+todo read book
+deadline return book /by 2026-03-01
+event tutorial /from 2026-03-01 /to 2026-03-02
+mark 2
+unmark 2
+delete 1
+bye
