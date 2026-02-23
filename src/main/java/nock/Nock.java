@@ -21,6 +21,9 @@ public class Nock {
         tasks = loaded;
     }
 
+    /**
+     * Run the program
+     */
     public void run() {
         ui.showWelcome();
 
