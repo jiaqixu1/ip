@@ -31,7 +31,6 @@ public class Storage {
         } catch (IOException e) {
             throw new NockException("Error loading tasks from file.");
         }
-
         return tasks;
     }
 

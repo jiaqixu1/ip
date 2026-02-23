@@ -9,6 +9,7 @@ public class Nock {
     private static final String DEFAULT_FILE_PATH = "data/nock.txt";
 
     public Nock(String filePath) {
+        assert filePath != null && !filePath.isBlank();
         ui = new Ui();
         storage = new Storage(filePath);
 
