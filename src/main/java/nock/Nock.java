@@ -102,7 +102,8 @@ public class Nock {
             case FIND:
                 List<Task> matches = tasks.findTasks(command.desc);
                 ui.showFindResults(matches);
-                return false;
+                return false;// here i use ai as my find got some bugs and some errors that i was not sure.
+            // so i ask ai to see what probably is the issue
 
             default:
                 throw new NockException("Unknown command.");
