@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class ParsedCommand {
     public enum Type {
-        EXIT, LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, FIND
+        EXIT, LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, FIND, HELP
     }
 
     public final Type type;
@@ -57,4 +57,9 @@ public class ParsedCommand {
 
     public static ParsedCommand find(String keyword) {
         return new ParsedCommand(Type.FIND, -1, keyword, null, null, null);
-    }}
+    }
+
+    public static ParsedCommand help() {
+        return new ParsedCommand(Type.HELP, -1, null, null, null, null);
+    }
+}
