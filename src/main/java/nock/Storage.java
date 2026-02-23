@@ -4,7 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
-
+/**
+ * Saving the data
+ */
 public class Storage {
     private final String filePath;
 
@@ -12,12 +14,17 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * Load tasks
+     * @return
+     * @throws NockException
+     */
     public ArrayList<Task> load() throws NockException {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
 
         if (!file.exists()) {
-            return tasks; // first run: nothing to load
+            return tasks;
         }
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {

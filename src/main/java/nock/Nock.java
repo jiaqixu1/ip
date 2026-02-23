@@ -1,11 +1,19 @@
 package nock;
 
+/**
+ * Main entry point of the Nock chatbot application.
+ * Responsible for coordinating UI, storage, and task list.
+ */
 public class Nock {
 
     private final Storage storage;
     private final TaskList tasks;
     private final Ui ui;
-
+    /**
+     * Creates a Nock chatbot using the given file path for storage.
+     *
+     * @param filePath path to the data file
+     */
     public Nock(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -20,7 +28,9 @@ public class Nock {
 
         tasks = loaded;
     }
-
+    /**
+     * Starts the chatbot interaction loop.
+     */
     public void run() {
         ui.showWelcome();
 

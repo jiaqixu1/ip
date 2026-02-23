@@ -2,6 +2,9 @@ package nock;
 
 import java.util.Scanner;
 
+/**
+ * ui
+ */
 public class Ui {
     private final Scanner scanner = new Scanner(System.in);
 

@@ -2,6 +2,9 @@ package nock;
 
 import java.time.LocalDate;
 
+/**
+ * ParsedCommand
+ */
 public class ParsedCommand {
     public enum Type {
         EXIT, LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT

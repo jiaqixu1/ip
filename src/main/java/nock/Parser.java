@@ -4,8 +4,17 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Parses user input into structured commands.
+ */
 public class Parser {
-
+    /**
+     * Parses the given user input string into a ParsedCommand.
+     *
+     * @param input raw user input
+     * @return parsed command
+     * @throws NockException if input is invalid
+     */
     public static ParsedCommand parse(String input) throws NockException {
         String trimmed = input.trim();
 
