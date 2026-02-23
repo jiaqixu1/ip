@@ -1,6 +1,8 @@
 package nock;
 
 import java.util.Scanner;
+import java.util.List;
+
 
 public class Ui {
     private final Scanner scanner = new Scanner(System.in);
@@ -49,6 +51,13 @@ public class Ui {
         System.out.println("Noted. I've removed this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + taskCount + " tasks in the list.");
+    }
+
+    public void showFindResults(List<Task> matches) {
+        System.out.println("Here are the matching tasks in your list:");
+        for (int i = 0; i < matches.size(); i++) {
+            System.out.println((i + 1) + "." + matches.get(i));
+        }
     }
 }
 
