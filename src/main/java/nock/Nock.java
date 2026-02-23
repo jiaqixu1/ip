@@ -109,6 +109,10 @@ public class Nock {
                 ui.showFindResults(matches);
                 return false;
 
+            case HELP:
+                ui.showHelp();
+                return false;
+
             default:
                 throw new NockException("Unknown command.");
         }

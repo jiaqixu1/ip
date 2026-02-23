@@ -20,6 +20,20 @@ public class Ui {
         return scanner.nextLine();
     }
 
+    public void showHelp() {
+        System.out.println("Nock Help");
+        System.out.println("Commands:");
+        System.out.println("  list");
+        System.out.println("  todo <description>");
+        System.out.println("  deadline <description> /by <yyyy-mm-dd>");
+        System.out.println("  event <description> /from <start> /to <end>");
+        System.out.println("  mark <index>");
+        System.out.println("  unmark <index>");
+        System.out.println("  delete <index>");
+        System.out.println("  find <keyword>");
+        System.out.println("  help");
+        System.out.println("  bye");
+    }
     public void showTasks(java.util.List<Task> tasks) {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
