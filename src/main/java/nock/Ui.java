@@ -44,7 +44,7 @@ public class Ui {
 
     /**
      * Show tasks
-     * @param tasks
+     * @param tasks tasks had
      * @return tasks
      */
     public String formatTasks(List<Task> tasks) {
@@ -61,8 +61,8 @@ public class Ui {
 
     /**
      * Show add message
-     * @param task
-     * @param taskCount
+     * @param task task
+     * @param taskCount number of tasks
      * @return add message
      */
     public String formatAdded(Task task, int taskCount) {
@@ -73,7 +73,7 @@ public class Ui {
 
     /**
      * Show mark message
-     * @param task
+     * @param task task to be marked
      * @return mark message
      */
     public String formatMarked(Task task) {
@@ -83,7 +83,7 @@ public class Ui {
 
     /**
      * Unmark item message
-     * @param task
+     * @param task task to be unmarked
      * @return unmark message
      */
     public String formatUnmarked(Task task) {
@@ -93,8 +93,8 @@ public class Ui {
 
     /**
      * Delete message
-     * @param task
-     * @param taskCount
+     * @param task task to be deleted
+     * @param taskCount num of task left
      * @return delete message
      */
     public String formatDeleted(Task task, int taskCount) {
@@ -105,7 +105,7 @@ public class Ui {
 
     /**
      * Find results
-     * @param matches
+     * @param matches list of matched results
      * @return results found
      */
     public String formatFindResults(List<Task> matches) {
