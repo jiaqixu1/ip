@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private final Nock nock = new Nock(); // if yours needs file path, keep your no-arg constructor
+    private final Nock nock = new Nock();
 
     @Override
     public void start(Stage stage) {
@@ -29,6 +29,7 @@ public class Main extends Application {
 
             stage.setTitle("Nock");
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

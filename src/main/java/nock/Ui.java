@@ -49,23 +49,23 @@ public class Ui {
     }
 
     public void showAdded(Task task, int taskCount) {
-        System.out.println("Got it. I've added this task:");
+        System.out.println("Got it. Nock has added this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + taskCount + " tasks in the list.");
     }
 
     public void showMarked(Task task) {
-        System.out.println("Nice! I've marked this task as done:");
+        System.out.println("Nice! Nock has marked this task as done:");
         System.out.println("  " + task);
     }
 
     public void showUnmarked(Task task) {
-        System.out.println("OK, I've marked this task as not done yet:");
+        System.out.println("OK, Nock has marked this task as not done yet:");
         System.out.println("  " + task);
     }
 
     public void showDeleted(Task task, int taskCount) {
-        System.out.println("Noted. I've removed this task:");
+        System.out.println("Noted. Nock has removed this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + taskCount + " tasks in the list.");
     }

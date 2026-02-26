@@ -190,7 +190,9 @@ public class Nock {
             return e.getMessage();
         }
     }
-
+    public String getWelcomeMessage() {
+        return "Hi, I am Nock. What can I help you?";
+    }
     public static void main(String[] args) {
         new Nock("./data/nock.txt").run();
     }
