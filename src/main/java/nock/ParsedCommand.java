@@ -39,7 +39,7 @@ public class ParsedCommand {
 
     /**
      * Mark items
-     * @param index
+     * @param index task index
      * @return Mark
      */
     public static ParsedCommand mark(int index) {
@@ -48,7 +48,7 @@ public class ParsedCommand {
 
     /**
      * Umark items
-     * @param index
+     * @param index task index
      * @return Unmark
      */
     public static ParsedCommand unmark(int index) {
@@ -57,7 +57,7 @@ public class ParsedCommand {
 
     /**
      * Remove items
-     * @param index
+     * @param index task index
      * @return Delete
      */
     public static ParsedCommand delete(int index) {
@@ -66,7 +66,7 @@ public class ParsedCommand {
 
     /**
      * Add items
-     * @param desc
+     * @param desc todo
      * @return Todo
      */
     public static ParsedCommand addTodo(String desc) {
@@ -75,8 +75,8 @@ public class ParsedCommand {
 
     /**
      * Add Deadline
-     * @param desc
-     * @param by
+     * @param desc todo
+     * @param by ending time
      * @return Deadline
      */
     public static ParsedCommand addDeadline(String desc, LocalDate by) {
@@ -85,9 +85,9 @@ public class ParsedCommand {
 
     /**
      * Add a event
-     * @param desc
-     * @param from
-     * @param to
+     * @param desc todo
+     * @param from starting time
+     * @param to ending time
      * @return Event
      */
     public static ParsedCommand addEvent(String desc, String from, String to) {
@@ -96,7 +96,7 @@ public class ParsedCommand {
 
     /**
      * Find an item
-     * @param keyword
+     * @param keyword keyword searched
      * @return Find
      */
     public static ParsedCommand find(String keyword) {
