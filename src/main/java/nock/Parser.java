@@ -67,6 +67,7 @@ public class Parser {
         String numberPart = input.substring(command.length()).trim();
         if (numberPart.isEmpty()) throw new NockException("Please provide a task number.");
         try {
+            assert Integer.parseInt(numberPart) - 1 >= 0;
             return Integer.parseInt(numberPart) - 1; // store as 0-based
         } catch (NumberFormatException e) {
             throw new NockException("nock.Task number must be an integer.");
