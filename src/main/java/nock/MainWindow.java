@@ -35,6 +35,14 @@ public class MainWindow extends AnchorPane {
     /** Injects the Nock instance */
     public void setNock(Nock n) {
         nock = n;
+        formatWelcomeMessage();
+    }
+
+    private void formatWelcomeMessage() {
+        String welcomeMessage = "Hello! I'm Nock\nWhat can I do for you?";
+        dialogContainer.getChildren().add(
+                DialogBox.getNockDialog(welcomeMessage, nockImage)
+        );
     }
 
     /**

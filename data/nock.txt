@@ -4,3 +4,4 @@ T | 0 | close book
 T | 0 | read books
 T | 0 | have lunch
 T | 0 | eat food
+T | 0 | drink abc
