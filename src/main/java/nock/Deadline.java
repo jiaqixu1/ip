@@ -14,10 +14,18 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    /**
+     * get by string for storage
+     * @return by string
+     */
     public String getByForStorage() {
         return by.toString(); // yyyy-MM-dd
     }
 
+    /**
+     * Print the outcome
+     * @return string outcome
+     */
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by.format(OUTPUT_FORMAT) + ")";
