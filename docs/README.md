@@ -3,7 +3,7 @@
 > Nock is a lightweight task management application that helps you manage your todos, deadlines, and events efficiently.
 
 Welcome to **Nock**, your personal task management chatbot.  
-Nock helps you track todos, deadlines, and events using simple text commands.
+Nock Chatbot helps you track todos, deadlines, and events using simple text commands.
 
 ---
 
