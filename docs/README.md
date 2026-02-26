@@ -81,7 +81,7 @@ deadline <description> /by <yyyy-MM-dd>
 deadline submit report /by 2026-03-10
 ```
 
-> ⚠️ **Important:** Date must follow the format `yyyy-MM-dd`.
+> **Important:** Date must follow the format `yyyy-MM-dd`.
 
 ---
 
@@ -185,7 +185,7 @@ find <keyword>
 find report
 ```
 
-> 🔎 Search is case-insensitive.
+> Search is case-insensitive.
 
 ---
 
