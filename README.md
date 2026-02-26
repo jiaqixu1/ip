@@ -1,5 +1,6 @@
 # Nock Chatbot
-Nock User Guide
+
+Nock Chatbot User Guide
 
 Welcome to Nock, your personal task management chatbot.
 Nock helps you track todos, deadlines, and events using simple text commands.
@@ -117,10 +118,12 @@ Closes the chatbot.
    Delete task	delete <number>
    Find task	find <keyword>
    Exit	bye
+
+
 4. Notes
 
-Task numbering starts from 1.
+   Task numbering starts from 1.
 
-Dates and times can be entered in flexible text format.
+   Dates and times can be entered in flexible text format.
 
-Invalid commands will prompt an error message. 
+   Invalid commands will prompt an error message. 
