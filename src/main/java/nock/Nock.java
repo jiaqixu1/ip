@@ -117,11 +117,79 @@ public class Nock {
                 throw new NockException("Unknown command.");
         }
     }
+
+    private String executeAndGetReply(ParsedCommand command) throws NockException {
+        switch (command.type) {
+            case EXIT:
+                return ui.formatGoodbye();
+
+            case LIST:
+                return ui.formatTasks(tasks.getTasks());
+
+            case MARK: {
+                Task markTask = tasks.get(command.index);
+                markTask.markDone();
+                storage.save(tasks.getTasks());
+                return ui.formatMarked(markTask);
+            }
+
+            case UNMARK: {
+                Task unmarkTask = tasks.get(command.index);
+                unmarkTask.markUndone();
+                storage.save(tasks.getTasks());
+                return ui.formatUnmarked(unmarkTask);
+            }
+
+            case DELETE: {
+                Task removed = tasks.remove(command.index);
+                storage.save(tasks.getTasks());
+                return ui.formatDeleted(removed, tasks.size());
+            }
+
+            case TODO: {
+                Task todo = new Todo(command.desc);
+                tasks.add(todo);
+                storage.save(tasks.getTasks());
+                return ui.formatAdded(todo, tasks.size());
+            }
+
+            case DEADLINE: {
+                Task deadline = new Deadline(command.desc, command.by);
+                tasks.add(deadline);
+                storage.save(tasks.getTasks());
+                return ui.formatAdded(deadline, tasks.size());
+            }
+
+            case EVENT: {
+                Task event = new Event(command.desc, command.from, command.to);
+                tasks.add(event);
+                storage.save(tasks.getTasks());
+                return ui.formatAdded(event, tasks.size());
+            }
+
+            case FIND: {
+                List<Task> matches = tasks.findTasks(command.desc);
+                return ui.formatFindResults(matches);
+            }
+
+            case HELP:
+                return ui.formatHelp();
+
+            default:
+                throw new NockException("Unknown command.");
+        }
+    }
     /**
      * Generates a response for the user's chat message.
      */
+
     public String getResponse(String input) {
-        return "Nock heard: " + input;
+        try {
+            ParsedCommand command = Parser.parse(input);
+            return executeAndGetReply(command);
+        } catch (NockException e) {
+            return e.getMessage();
+        }
     }
 
     public static void main(String[] args) {
