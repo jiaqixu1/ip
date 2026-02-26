@@ -23,6 +23,10 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Get whether item is done or not
+     * @return done or undone status
+     */
     public String getStatusIcon() {
         return (isDone ? "X" : " ");
     }
