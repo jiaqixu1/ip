@@ -27,6 +27,10 @@ public class Task {
         return (isDone ? "X" : " ");
     }
 
+    /**
+     * Get Description
+     * @return description
+     */
     public String getDescription() {
         return description;
     }

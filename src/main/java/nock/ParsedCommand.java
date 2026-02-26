@@ -22,39 +22,83 @@ public class ParsedCommand {
         this.from = from;
         this.to = to;
     }
-
+   /**
+    * Exit the program
+    */
     public static ParsedCommand exit() {
         return new ParsedCommand(Type.EXIT, -1, null, null, null, null);
     }
 
+    /**
+     *
+     * @return List
+     */
     public static ParsedCommand list() {
         return new ParsedCommand(Type.LIST, -1, null, null, null, null);
     }
 
+    /**
+     * Mark items
+     * @param index
+     * @return Mark
+     */
     public static ParsedCommand mark(int index) {
         return new ParsedCommand(Type.MARK, index, null, null, null, null);
     }
 
+    /**
+     * Umark items
+     * @param index
+     * @return Unmark
+     */
     public static ParsedCommand unmark(int index) {
         return new ParsedCommand(Type.UNMARK, index, null, null, null, null);
     }
 
+    /**
+     * Remove items
+     * @param index
+     * @return Delete
+     */
     public static ParsedCommand delete(int index) {
         return new ParsedCommand(Type.DELETE, index, null, null, null, null);
     }
 
+    /**
+     * Add items
+     * @param desc
+     * @return Todo
+     */
     public static ParsedCommand addTodo(String desc) {
         return new ParsedCommand(Type.TODO, -1, desc, null, null, null);
     }
 
+    /**
+     * Add Deadline
+     * @param desc
+     * @param by
+     * @return Deadline
+     */
     public static ParsedCommand addDeadline(String desc, LocalDate by) {
         return new ParsedCommand(Type.DEADLINE, -1, desc, by, null, null);
     }
 
+    /**
+     * Add a event
+     * @param desc
+     * @param from
+     * @param to
+     * @return Event
+     */
     public static ParsedCommand addEvent(String desc, String from, String to) {
         return new ParsedCommand(Type.EVENT, -1, desc, null, from, to);
     }
 
+    /**
+     * Find an item
+     * @param keyword
+     * @return Find
+     */
     public static ParsedCommand find(String keyword) {
         return new ParsedCommand(Type.FIND, -1, keyword, null, null, null);
     }

@@ -38,6 +38,9 @@ public class MainWindow extends AnchorPane {
         formatWelcomeMessage();
     }
 
+    /**
+     * Give a welcome Message
+     */
     private void formatWelcomeMessage() {
         String welcomeMessage = "Hello! I'm Nock\nWhat can I do for you?";
         dialogContainer.getChildren().add(

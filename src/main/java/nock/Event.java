@@ -10,6 +10,10 @@ public class Event extends Task {
         this.to = to;
     }
 
+    /**
+     * Print the string
+     * @return Event string
+     */
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";

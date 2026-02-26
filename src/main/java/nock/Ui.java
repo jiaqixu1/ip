@@ -8,76 +8,6 @@ public class Ui {
     private final Scanner scanner = new Scanner(System.in);
 
     /**
-     * Show Method is for CLI
-     */
-    public void showWelcome() {
-        System.out.println("Hello! I'm nock. Nock");
-        System.out.println("What can I do for you?");
-    }
-
-    public void showGoodbye() {
-        System.out.println("Bye. Hope to see you again soon!");
-    }
-
-    public String readCommand() {
-        return scanner.nextLine();
-    }
-
-    public void showHelp() {
-        System.out.println("Nock Help");
-        System.out.println("Commands:");
-        System.out.println("  list");
-        System.out.println("  todo <description>");
-        System.out.println("  deadline <description> /by <yyyy-mm-dd>");
-        System.out.println("  event <description> /from <start> /to <end>");
-        System.out.println("  mark <index>");
-        System.out.println("  unmark <index>");
-        System.out.println("  delete <index>");
-        System.out.println("  find <keyword>");
-        System.out.println("  help");
-        System.out.println("  bye");
-    }
-    public void showTasks(java.util.List<Task> tasks) {
-        System.out.println("Here are the tasks in your list:");
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + "." + tasks.get(i));
-        }
-    }
-
-    public void showError(String message) {
-        System.out.println(message);
-    }
-
-    public void showAdded(Task task, int taskCount) {
-        System.out.println("Got it. Nock has added this task:");
-        System.out.println("  " + task);
-        System.out.println("Now you have " + taskCount + " tasks in the list.");
-    }
-
-    public void showMarked(Task task) {
-        System.out.println("Nice! Nock has marked this task as done:");
-        System.out.println("  " + task);
-    }
-
-    public void showUnmarked(Task task) {
-        System.out.println("OK, Nock has marked this task as not done yet:");
-        System.out.println("  " + task);
-    }
-
-    public void showDeleted(Task task, int taskCount) {
-        System.out.println("Noted. Nock has removed this task:");
-        System.out.println("  " + task);
-        System.out.println("Now you have " + taskCount + " tasks in the list.");
-    }
-
-    public void showFindResults(List<Task> matches) {
-        System.out.println("Here are the matching tasks in your list:");
-        for (int i = 0; i < matches.size(); i++) {
-            System.out.println((i + 1) + "." + matches.get(i));
-        }
-    }
-
-    /**
      * Next few methods are for GUI
      * @return String
      */
@@ -85,10 +15,18 @@ public class Ui {
         return "Hello! I'm Nock\nWhat can I do for you?";
     }
 
+    /**
+     * Show goodbye message
+     * @return goodbye message
+     */
     public String formatGoodbye() {
         return "Bye. Hope to see you again soon!";
     }
 
+    /**
+     * Show help message
+     * @return help command
+     */
     public String formatHelp() {
         return "Nock Help\n"
                 + "Commands:\n"
@@ -104,6 +42,11 @@ public class Ui {
                 + "  bye";
     }
 
+    /**
+     * Show tasks
+     * @param tasks
+     * @return tasks
+     */
     public String formatTasks(List<Task> tasks) {
         StringBuilder sb = new StringBuilder("Here are the tasks in your list:");
         if (tasks.isEmpty()) {
@@ -116,28 +59,55 @@ public class Ui {
         return sb.toString();
     }
 
+    /**
+     * Show add message
+     * @param task
+     * @param taskCount
+     * @return add message
+     */
     public String formatAdded(Task task, int taskCount) {
         return "Got it. I've added this task:\n"
                 + "  " + task + "\n"
                 + "Now you have " + taskCount + " tasks in the list.";
     }
 
+    /**
+     * Show mark message
+     * @param task
+     * @return mark message
+     */
     public String formatMarked(Task task) {
         return "Nice! I've marked this task as done:\n"
                 + "  " + task;
     }
 
+    /**
+     * Unmark item message
+     * @param task
+     * @return unmark message
+     */
     public String formatUnmarked(Task task) {
         return "OK, I've marked this task as not done yet:\n"
                 + "  " + task;
     }
 
+    /**
+     * Delete message
+     * @param task
+     * @param taskCount
+     * @return delete message
+     */
     public String formatDeleted(Task task, int taskCount) {
         return "Noted. I've removed this task:\n"
                 + "  " + task + "\n"
                 + "Now you have " + taskCount + " tasks in the list.";
     }
 
+    /**
+     * Find results
+     * @param matches
+     * @return results found
+     */
     public String formatFindResults(List<Task> matches) {
         StringBuilder sb = new StringBuilder("Here are the matching tasks in your list:");
         if (matches.isEmpty()) {

@@ -48,10 +48,16 @@ public class DialogBox extends HBox {
         setAlignment(Pos.TOP_LEFT);
     }
 
+    /**
+     * Get User Dialog Box
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }
 
+    /**
+     * Flip the dialog box to get Nock Dialog box
+     */
     public static DialogBox getNockDialog(String text, Image img) {
         DialogBox db = new DialogBox(text, img);
         db.flip();
