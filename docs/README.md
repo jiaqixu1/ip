@@ -1,129 +1,237 @@
-# Nock Chatbot
+# Nock Chatbot User Guide
 
-Nock Chatbot User Guide
+> Nock is a lightweight task management application that helps you manage your todos, deadlines, and events efficiently.
 
-Welcome to Nock, your personal task management chatbot.
+Welcome to **Nock**, your personal task management chatbot.  
 Nock helps you track todos, deadlines, and events using simple text commands.
 
-1. Quick Start
+---
 
-Ensure you have Java 17 or above installed.
+# Table of Contents
 
-Download the latest nock.jar.
+- [Quick Start](#quick-start)
+- [Features](#features)
+   - [Adding Tasks](#adding-tasks)
+      - [Add a Todo](#add-a-todo)
+      - [Add a Deadline](#add-a-deadline)
+      - [Add an Event](#add-an-event)
+   - [Listing Tasks](#listing-tasks)
+   - [Marking a Task](#marking-a-task-as-done)
+   - [Unmarking a Task](#unmarking-a-task)
+   - [Deleting a Task](#deleting-a-task)
+   - [Finding Tasks](#finding-tasks)
+   - [Help Command](#help-command)
+   - [Exiting the Program](#exiting-the-program)
+- [Notes](#notes)
 
-Open a terminal in the folder containing the .jar file.
+---
 
-Run:
+# Quick Start
 
+1. Ensure you have **Java 17 or above** installed.
+2. Download the latest `nock.jar`.
+3. Open a terminal in the folder containing the `.jar` file.
+4. Run:
+
+```
 java -jar nock.jar
+```
 
-Type commands into the chatbot.
+5. Type commands into the chatbot and press **Enter**.
 
-2. Features
+---
 
-2.1 Adding Tasks
+# Features
 
-2.1.1Add a Todo
+---
+
+## Adding Tasks
+
+### Add a Todo
 
 Adds a simple task without a date.
 
-      todo <description>
+**Format**
 
-Example:
+```
+todo <description>
+```
+
+**Example**
+
+```
 todo read book
+```
 
+---
 
-2.1.2Add a Deadline
+### Add a Deadline
 
 Adds a task with a due date.
 
-      deadline <description> /by <date>
+**Format**
 
-Example:
+```
+deadline <description> /by <yyyy-MM-dd>
+```
+
+**Example**
+
+```
 deadline submit report /by 2026-03-10
+```
 
-2.1.3Add an Event
+> ⚠️ **Important:** Date must follow the format `yyyy-MM-dd`.
+
+---
+
+### Add an Event
 
 Adds a task with start and end time.
 
-      event <description> /from <start> /to <end>
+**Format**
 
-Example:
+```
+event <description> /from <start> /to <end>
+```
 
+**Example**
+
+```
 event team meeting /from 2pm /to 4pm
-2.2 Listing Tasks
+```
+
+---
+
+## Listing Tasks
 
 Displays all tasks currently stored.
 
-      list
+**Format**
 
+```
+list
+```
 
-2.3 Marking a Task as Done
+---
+
+## Marking a Task as Done
 
 Marks a task as completed.
 
-      mark <task number>
+**Format**
 
-Example:
+```
+mark <task number>
+```
 
+**Example**
+
+```
 mark 2
+```
 
+---
 
-2.4 Unmarking a Task
+## Unmarking a Task
 
 Marks a completed task as not done.
 
-      unmark <task number>
+**Format**
 
-Example:
+```
+unmark <task number>
+```
 
+**Example**
+
+```
 unmark 2
+```
 
+---
 
-2.5 Deleting a Task
+## Deleting a Task
 
 Deletes a task from the list.
 
-      delete <task number>
+**Format**
 
-Example:
+```
+delete <task number>
+```
 
+**Example**
+
+```
 delete 3
+```
 
+---
 
-2.6 Finding Tasks
+## Finding Tasks
 
 Searches tasks by keyword.
 
-      find <keyword>
+**Format**
 
-Example:
+```
+find <keyword>
+```
 
+**Example**
+
+```
 find report
+```
 
+> 🔎 Search is case-insensitive.
 
-2.7 Exiting the Program
+---
+
+## Help Command
+
+Displays a summary of all available commands.
+
+**Format**
+
+```
+help
+```
+
+---
+
+## Exiting the Program
 
 Closes the chatbot.
 
-      bye
-3. Command Summary
-   Command	Format
-   Add todo	todo <description>
-   Add deadline	deadline <description> /by <date>
-   Add event	event <description> /from <start> /to <end>
-   List tasks	list
-   Mark task	mark <number>
-   Unmark task	unmark <number>
-   Delete task	delete <number>
-   Find task	find <keyword>
-   Exit	bye
+**Format**
 
+```
+bye
+```
 
-4. Notes
+---
 
-   Task numbering starts from 1.
+# Notes
 
-   Dates and times can be entered in flexible text format.
+- Task numbering starts from **1**.
+- Invalid commands will prompt an error message.
+- All commands must follow the specified format.
 
-   Invalid commands will prompt an error message. 
+---
+
+# Command Summary
+
+| Command | Format |
+|----------|--------|
+| `todo` | `todo <description>` |
+| `deadline` | `deadline <description> /by <yyyy-MM-dd>` |
+| `event` | `event <description> /from <start> /to <end>` |
+| `list` | `list` |
+| `mark` | `mark <task number>` |
+| `unmark` | `unmark <task number>` |
+| `delete` | `delete <task number>` |
+| `find` | `find <keyword>` |
+| `help` | `help` |
+| `bye` | `bye` |
