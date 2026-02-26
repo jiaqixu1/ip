@@ -19,7 +19,7 @@ public class Deadline extends Task {
      * @return by string
      */
     public String getByForStorage() {
-        return by.toString(); // yyyy-MM-dd
+        return by.toString(); // yyyy-MM-dd format
     }
 
     /**
