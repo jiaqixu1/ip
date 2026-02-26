@@ -17,7 +17,7 @@ public class Parser {
 
         if (trimmed.startsWith("todo")) {
             String desc = trimmed.substring(4).trim();
-            if (desc.isEmpty()) throw new NockException("nock.Todo description cannot be empty.");
+            if (desc.isEmpty()) throw new NockException("Todo description cannot be empty.");
             return ParsedCommand.addTodo(desc);
         }
 
@@ -70,7 +70,7 @@ public class Parser {
             assert Integer.parseInt(numberPart) - 1 >= 0;
             return Integer.parseInt(numberPart) - 1; // store as 0-based
         } catch (NumberFormatException e) {
-            throw new NockException("nock.Task number must be an integer.");
+            throw new NockException("Task number must be an integer.");
         }
     }
 

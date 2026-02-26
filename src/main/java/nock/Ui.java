@@ -79,7 +79,7 @@ public class Ui {
 
     /**
      * Next few methods are for GUI
-     * @return
+     * @return String
      */
     public String formatWelcome() {
         return "Hello! I'm Nock\nWhat can I do for you?";
