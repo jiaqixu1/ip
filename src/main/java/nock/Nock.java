@@ -126,7 +126,7 @@ public class Nock {
                 return ui.formatHelp();
 
             default:
-                throw new NockException("Unknown command.");
+                throw new NockException("Unknown command."); //exception
         }
     }
 }

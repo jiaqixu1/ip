@@ -12,7 +12,7 @@ public class Event extends Task {
 
     /**
      * Print the string
-     * @return Event string
+     * @return Event string printed
      */
     @Override
     public String toString() {
